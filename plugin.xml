@@ -6,7 +6,7 @@
 
 	<name>CordovaParse</name>
 	<description>
-		A cordova plugin for Parse SDK (iOS & Android)
+		A cordova plugin for Parse SDK (iOS &amp; Android)
 	</description>
 	<author>CCSoft</author>
 	<keywords>parse, push, cordova, ccsoft</keywords>
