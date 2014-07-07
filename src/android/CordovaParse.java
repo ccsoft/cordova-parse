@@ -1,8 +1,5 @@
 package com.ccsoft.plugin;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
@@ -22,7 +19,7 @@ public class CordovaParse extends CordovaPlugin {
 
     	if (action.equals("getInstallationId")) {
 			String id = ParseInstallation.getCurrentInstallation().getInstallationId();
-			Log.d("Parse.com Plugin", "Installation Id: " + id);
+			Log.i(TAG, "Installation Id: " + id);
 			callbackContext.success(id);
 			return true;
     	}
@@ -32,13 +29,16 @@ public class CordovaParse extends CordovaPlugin {
 				ParseInstallation inst = ParseInstallation.getCurrentInstallation();
 				String key = args.getString(0);
 				String value = args.getString(1);
-				inst.add(key, value);
+				inst.put(key, value);
 				inst.saveEventually();
-				Log.d("Parse.com Plugin", "Saved key: " + key + " and value: " + value);
+				Log.i(TAG, "Saved key: " + key + " and value: " + value);
 					
 				callbackContext.success("");
-				return true;
+			} else {
+				callbackContext.error("invalid number of params passed");
 			}
+				
+			return true;
     	}
     	
         return false;
